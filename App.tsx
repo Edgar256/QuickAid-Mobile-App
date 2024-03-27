@@ -21,6 +21,8 @@ import {
   View,
 } from 'react-native';
 import {
+  StaffLogin,
+  StaffSignUp,
   UserBlogs,
   UserLogin,
   UserSignUp,
@@ -31,12 +33,13 @@ import {
 function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName={'UserBlogs'}>
+      <Stack.Navigator initialRouteName={'Welcome'}>
         <Stack.Screen
           name="Welcome"
           component={Welcome}
           options={{title: 'Welcome'}}
         />
+
         {/* User screens */}
         <Stack.Screen
           name="UserLogin"
@@ -62,6 +65,22 @@ function App() {
         <Stack.Screen
           name="UserBlogs"
           component={UserBlogs}
+          options={{
+            headerShown: false,
+          }}
+        />
+
+        {/* Staff screens */}
+        <Stack.Screen
+          name="StaffLogin"
+          component={StaffLogin}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="StaffSignUp"
+          component={StaffSignUp}
           options={{
             headerShown: false,
           }}
