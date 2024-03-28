@@ -9,7 +9,7 @@ const Tab = createBottomTabNavigator();
 function TabNavigator() {
   return (
     <Tab.Navigator
-      initialRouteName="UserLanding"
+      initialRouteName="Order Ambulance"
       screenOptions={{
         headerTitleAlign: 'center',
         activeTintColor: COLORS.primary,
@@ -25,7 +25,7 @@ function TabNavigator() {
         headerTintColor: COLORS.white,
       }}>
       <Tab.Screen
-        name="UserHistory"
+        name="Ambulances History"
         component={UserHistory}
         options={{
           tabBarLabel: 'History',
@@ -33,7 +33,7 @@ function TabNavigator() {
             <Icon
               name="history"
               size={25}
-              color={COLORS.primary} 
+              color={COLORS.primary}
               style={{marginBottom: 1}}
             />
           ),
@@ -41,7 +41,7 @@ function TabNavigator() {
         }}
       />
       <Tab.Screen
-        name="UserLanding"
+        name="Order Ambulance"
         component={UserLanding}
         options={{
           tabBarLabel: 'Order Ambulance',
@@ -49,14 +49,14 @@ function TabNavigator() {
             <Icon
               name="ambulance"
               size={25}
-              color={COLORS.primary} 
+              color={COLORS.primary}
               style={{marginBottom: 1}}
             />
           ),
         }}
       />
       <Tab.Screen
-        name="UserAccount"
+        name="Account Details"
         component={UserAccount}
         options={{
           tabBarLabel: 'Account',
@@ -64,7 +64,7 @@ function TabNavigator() {
             <Icon
               name="user"
               size={25}
-              color={COLORS.primary} 
+              color={COLORS.primary}
               style={{marginBottom: 1}}
             />
           ),

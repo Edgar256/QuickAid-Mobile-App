@@ -75,14 +75,16 @@ function App() {
           name="UserBlogs"
           component={UserBlogs}
           options={{
-            headerShown: false,
+            headerShown: true,
+            title: 'Blogs',
           }}
         />
         <Stack.Screen
           name="UserBlog"
           component={UserBlog}
           options={{
-            headerShown: false,
+            headerShown: true,
+            title: 'Blog',
           }}
         />
         <Stack.Screen
