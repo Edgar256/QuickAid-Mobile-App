@@ -25,6 +25,7 @@ import {
   StaffLogin,
   StaffSignUp,
   UserBlogs,
+  UserLanding,
   UserLogin,
   UserSignUp,
   UserSubmitMedicalHistory,
@@ -34,7 +35,7 @@ import {
 function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName={'Welcome'}>
+      <Stack.Navigator initialRouteName={'UserLanding'}>
         <Stack.Screen
           name="Welcome"
           component={Welcome}
@@ -71,6 +72,13 @@ function App() {
         <Stack.Screen
           name="UserBlogs"
           component={UserBlogs}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="UserLanding"
+          component={UserLanding}
           options={{
             headerShown: false,
           }}

@@ -5,8 +5,10 @@
 // export const img001 = require('../assets/images/img001.jpg');
 export const Logo = require('../assets/images/logo.png');
 export const WelcomeBackground = require('../assets/images/background.jpg');
+export const Blog = require('../assets/images/blog.jpg');
 
 export default {
   Logo,
   WelcomeBackground,
+  Blog,
 };

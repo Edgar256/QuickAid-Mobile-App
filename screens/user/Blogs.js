@@ -33,6 +33,7 @@ export default function Index({navigation}) {
 
   return (
     <View style={styles.container}>
+      <Text style={styles.text}>Welcome to our blogs !</Text>
       <FlatList
         data={blogs}
         renderItem={renderItem}
@@ -48,6 +49,11 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingHorizontal: 20,
     paddingTop: 20,
+    backgroundColor: '#F2F5FB',
+  },
+  text: {
+    fontSize: 18,
+    marginVertical: 8,
   },
   listContainer: {
     paddingBottom: 20,
