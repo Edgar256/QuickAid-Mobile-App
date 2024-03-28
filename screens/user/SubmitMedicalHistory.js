@@ -7,10 +7,11 @@ import {
   StyleSheet,
 } from 'react-native';
 
-export default function Index() {
+export default function Index({navigation}) {
   const [allergies, setAllergies] = useState('');
   const [pastTreatments, setPastTreatments] = useState('');
   const [currentMedications, setCurrentMedications] = useState('');
+  navigation.navigate('TabNavigator');
 
   const handleSubmit = () => {
     // Implement your submission logic here

@@ -25,7 +25,7 @@ export default function Index({navigation}) {
   const renderItem = ({item}) => (
     <TouchableOpacity
       style={styles.itemContainer}
-      onPress={() => navigation.navigate('BlogDetails', {blogId: item.id})}>
+      onPress={() => navigation.navigate('UserBlog', {blogId: item.id})}>
       <Text style={styles.title}>{item.title}</Text>
       <Text style={styles.content}>{item.content}</Text>
     </TouchableOpacity>

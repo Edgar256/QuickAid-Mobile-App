@@ -5,8 +5,11 @@ import LoginOptions from './LoginOptions';
 import UserLogin from './user/Login';
 import UserSignUp from './user/SignUp';
 import UserSubmitMedicalHistory from './user/SubmitMedicalHistory';
+import UserBlog from './user/Blog';
 import UserBlogs from './user/Blogs';
 import UserLanding from './user/Landing';
+import UserHistory from './user/History';
+import UserAccount from './user/Account';
 
 // Staff screens
 import StaffLogin from './staff/Login';
@@ -19,7 +22,10 @@ export {
   UserSignUp,
   UserSubmitMedicalHistory,
   UserBlogs,
+  UserBlog,
   StaffLogin,
   StaffSignUp,
   UserLanding,
+  UserHistory,
+  UserAccount,
 };

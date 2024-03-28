@@ -5,13 +5,14 @@ import {
   TouchableOpacity,
   Text,
   ImageBackground,
+  ScrollView,
 } from 'react-native';
 import {images} from '../../constants';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 const LandingPage = ({navigation}) => {
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <Text style={styles.text}>Hello , John Doe !</Text>
       <View style={styles.section}>
         <Text style={styles.sectionText}>
@@ -40,7 +41,7 @@ const LandingPage = ({navigation}) => {
         </View>
         <Text style={styles.sectionText}>Read Blogs</Text>
       </TouchableOpacity>
-    </View>
+    </ScrollView>
   );
 };
 

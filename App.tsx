@@ -24,6 +24,7 @@ import {
   LoginOptions,
   StaffLogin,
   StaffSignUp,
+  UserBlog,
   UserBlogs,
   UserLanding,
   UserLogin,
@@ -31,11 +32,12 @@ import {
   UserSubmitMedicalHistory,
   Welcome,
 } from './screens';
+import TabNavigator from './navigations/TabNavigator';
 
 function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName={'UserLanding'}>
+      <Stack.Navigator initialRouteName={'Welcome'}>
         <Stack.Screen
           name="Welcome"
           component={Welcome}
@@ -77,8 +79,22 @@ function App() {
           }}
         />
         <Stack.Screen
+          name="UserBlog"
+          component={UserBlog}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
           name="UserLanding"
           component={UserLanding}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="TabNavigator"
+          component={TabNavigator}
           options={{
             headerShown: false,
           }}
