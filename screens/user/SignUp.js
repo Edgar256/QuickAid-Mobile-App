@@ -7,7 +7,7 @@ import {
   StyleSheet,
 } from 'react-native';
 
-export default function Index() {
+export default function Index({navigation}) {
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
@@ -21,6 +21,7 @@ export default function Index() {
     console.log('Phone Number:', phoneNumber);
     console.log('Password:', password);
     console.log('Confirm Password:', confirmPassword);
+    navigation.navigate('UserLogin');
   };
 
   return (

@@ -1,4 +1,5 @@
 import Welcome from './Welcome';
+import LoginOptions from './LoginOptions'
 
 // User screens
 import UserLogin from './user/Login';
@@ -11,7 +12,7 @@ import StaffLogin from './staff/Login';
 import StaffSignUp from './staff/SignUp';
 
 export {
-  Welcome,
+  Welcome,LoginOptions,
   UserLogin,
   UserSignUp,
   UserSubmitMedicalHistory,

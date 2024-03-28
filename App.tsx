@@ -21,6 +21,7 @@ import {
   View,
 } from 'react-native';
 import {
+  LoginOptions,
   StaffLogin,
   StaffSignUp,
   UserBlogs,
@@ -37,7 +38,12 @@ function App() {
         <Stack.Screen
           name="Welcome"
           component={Welcome}
-          options={{title: 'Welcome'}}
+          options={{title: 'Welcome', headerShown: false}}
+        />
+        <Stack.Screen
+          name="LoginOptions"
+          component={LoginOptions}
+          options={{title: 'Welcome', headerShown: false}}
         />
 
         {/* User screens */}

@@ -2,25 +2,24 @@ import React from 'react';
 import {View, Image, StyleSheet, Text, TouchableOpacity} from 'react-native';
 import {images} from '../constants';
 
-const WelcomeScreen = ({navigation}) => {
+export default function Index({navigation}) {
   return (
     <View style={styles.container}>
       <Image source={images.WelcomeBackground} style={styles.backgroundImage} />
       <Image source={images.Logo} style={styles.logo} />
-      <Text style={styles.text}>
-        Welcome to QuickAid - Your Trusted First Aid and Ambulance Services App!
-        Access instant first aid guidance, emergency ambulance services, medical
-        history storage, and informative blogs. Download now for peace of mind
-        during medical emergencies!
-      </Text>
       <TouchableOpacity
         style={styles.button}
-        onPress={() => navigation.navigate('LoginOptions')}>
-        <Text style={styles.buttonText}>Get Started</Text>
+        onPress={() => navigation.navigate('UserSignUp')}>
+        <Text style={styles.buttonText}>I am a patient</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => navigation.navigate('Login')}>
+        <Text style={styles.buttonText}>I am Medical Personnel</Text>
       </TouchableOpacity>
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -43,7 +42,7 @@ const styles = StyleSheet.create({
     paddingVertical: 15,
     paddingHorizontal: 30,
     borderRadius: 10,
-    marginTop: 20,
+    marginTop: 50,
   },
   buttonText: {
     color: 'white',
@@ -57,5 +56,3 @@ const styles = StyleSheet.create({
     marginVertical: 40,
   },
 });
-
-export default WelcomeScreen;
