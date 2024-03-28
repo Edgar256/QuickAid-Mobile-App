@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   StyleSheet,
 } from 'react-native';
+import { COLORS } from '../../constants';
 
 export default function Index({navigation}) {
   const [fullName, setFullName] = useState('');
@@ -26,7 +27,7 @@ export default function Index({navigation}) {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Sign Up</Text>
+      <Text style={styles.title}>Patient Sign Up</Text>
       <TextInput
         style={styles.input}
         placeholder="Full Name"
@@ -75,6 +76,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     paddingHorizontal: 20,
+    backgroundColor:COLORS.lightGray
   },
   title: {
     fontSize: 24,
@@ -91,7 +93,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   button: {
-    backgroundColor: 'blue',
+    backgroundColor: COLORS.primary,
     paddingVertical: 10,
     paddingHorizontal: 20,
     borderRadius: 5,

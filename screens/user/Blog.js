@@ -27,12 +27,6 @@ const BlogDetailsPage = ({route,navigation}) => {
   );
 };
 
-// Add navigation options for the header
-BlogDetailsPage.navigationOptions = ({navigation}) => ({
-  headerLeft: () => (
-    <HeaderBackButton onPress={() => navigation.goBack()} tintColor="#000" />
-  ),
-});
 
 const styles = StyleSheet.create({
   container: {

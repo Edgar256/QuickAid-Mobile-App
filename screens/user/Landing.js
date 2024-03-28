@@ -7,7 +7,7 @@ import {
   ImageBackground,
   ScrollView,
 } from 'react-native';
-import {images} from '../../constants';
+import {COLORS, images} from '../../constants';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 const LandingPage = ({navigation}) => {
@@ -29,7 +29,7 @@ const LandingPage = ({navigation}) => {
         style={styles.section}
         onPress={() => navigation.navigate('OrderAmbulance')}>
         <View style={styles.iconContainer}>
-          <Icon name="ambulance" size={100} color="#900" />
+          <Icon name="ambulance" size={100} color={COLORS.primary} />
         </View>
         <Text style={styles.sectionText}>Order an Ambulance</Text>
       </TouchableOpacity>
@@ -37,7 +37,7 @@ const LandingPage = ({navigation}) => {
         style={styles.section}
         onPress={() => navigation.navigate('UserBlogs')}>
         <View style={styles.iconContainer}>
-          <Icon name="feed" size={100} color="#900" />
+          <Icon name="feed" size={100} color={COLORS.primary} />
         </View>
         <Text style={styles.sectionText}>Read Blogs</Text>
       </TouchableOpacity>
@@ -48,7 +48,7 @@ const LandingPage = ({navigation}) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F2F5FB',
+    backgroundColor: COLORS.lightGray,
     padding: 10,
   },
   text: {
@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   section: {
-    backgroundColor: '#ffffff',
+    backgroundColor: COLORS.white,
     padding: 20,
     margin: 0,
     borderRadius: 10,

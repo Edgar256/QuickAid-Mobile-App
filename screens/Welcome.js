@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Image, StyleSheet, Text, TouchableOpacity} from 'react-native';
-import {images} from '../constants';
+import {COLORS, images} from '../constants';
 
 const WelcomeScreen = ({navigation}) => {
   return (
@@ -36,25 +36,27 @@ const styles = StyleSheet.create({
   logo: {
     width: 200,
     height: 200,
-    marginBottom: 50,
-  },
-  button: {
-    backgroundColor: '#4CAF50',
-    paddingVertical: 15,
-    paddingHorizontal: 30,
-    borderRadius: 10,
-    marginTop: 20,
-  },
-  buttonText: {
-    color: 'white',
-    fontSize: 18,
-    fontWeight: 'bold',
-  },
+    marginBottom: 20,
+  },  
   text: {
-    color: 'white',
+    color: COLORS.white,
     fontSize: 16,
     textAlign: 'center',
-    marginVertical: 40,
+    marginTop: 30,
+    padding:30
+  },
+  button: {
+    backgroundColor: COLORS.primary,
+    paddingVertical: 10,
+    paddingHorizontal: 30,
+    borderRadius: 8,
+    marginTop: 20,
+    marginBottom:100
+  }, 
+  buttonText: {
+    color:  COLORS.white,
+    fontSize: 18,
+    fontWeight: 'bold',
   },
 });
 

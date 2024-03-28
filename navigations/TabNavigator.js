@@ -20,7 +20,7 @@ function TabNavigator() {
           paddingBottom: 2,
         },
         headerStyle: {
-          backgroundColor: COLORS.secondary,
+          backgroundColor: COLORS.primary,
         },
         headerTintColor: COLORS.white,
       }}>
@@ -32,8 +32,8 @@ function TabNavigator() {
           tabBarIcon: ({color, size}) => (
             <Icon
               name="history"
-              size={35}
-              color="#900"
+              size={25}
+              color={COLORS.primary} 
               style={{marginBottom: 1}}
             />
           ),
@@ -48,8 +48,8 @@ function TabNavigator() {
           tabBarIcon: ({color, size}) => (
             <Icon
               name="ambulance"
-              size={35}
-              color="#900"
+              size={25}
+              color={COLORS.primary} 
               style={{marginBottom: 1}}
             />
           ),
@@ -63,8 +63,8 @@ function TabNavigator() {
           tabBarIcon: ({color, size}) => (
             <Icon
               name="user"
-              size={35}
-              color="#900"
+              size={25}
+              color={COLORS.primary} 
               style={{marginBottom: 1}}
             />
           ),

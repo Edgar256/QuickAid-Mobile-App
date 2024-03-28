@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   StyleSheet,
 } from 'react-native';
+import {COLORS} from '../../constants';
 
 export default function Index({navigation}) {
   const [email, setEmail] = useState('');
@@ -20,7 +21,7 @@ export default function Index({navigation}) {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Login</Text>
+      <Text style={styles.title}>Patient Login</Text>
       <TextInput
         style={styles.input}
         placeholder="Email"
@@ -49,6 +50,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     paddingHorizontal: 20,
+    backgroundColor: COLORS.lightGray,
   },
   title: {
     fontSize: 24,
@@ -65,13 +67,13 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   button: {
-    backgroundColor: 'blue',
+    backgroundColor: COLORS.primary,
     paddingVertical: 10,
     paddingHorizontal: 20,
     borderRadius: 5,
   },
   buttonText: {
-    color: 'white',
+    color: COLORS.white,
     fontSize: 16,
     fontWeight: 'bold',
   },

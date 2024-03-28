@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Image, StyleSheet, Text, TouchableOpacity} from 'react-native';
-import {images} from '../constants';
+import {COLORS, images} from '../constants';
 
 export default function Index({navigation}) {
   return (
@@ -38,10 +38,10 @@ const styles = StyleSheet.create({
     marginBottom: 50,
   },
   button: {
-    backgroundColor: '#4CAF50',
-    paddingVertical: 15,
+    backgroundColor: COLORS.primary,
+    paddingVertical: 10,
     paddingHorizontal: 30,
-    borderRadius: 10,
+    borderRadius: 8,
     marginTop: 50,
   },
   buttonText: {
