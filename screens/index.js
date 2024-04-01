@@ -18,14 +18,19 @@ import StaffSignUp from './staff/SignUp';
 export {
   Welcome,
   LoginOptions,
+
+  // User
   UserLogin,
   UserSignUp,
   UserSubmitMedicalHistory,
   UserBlogs,
-  UserBlog,
-  StaffLogin,
-  StaffSignUp,
+  UserBlog,  
   UserLanding,
   UserHistory,
   UserAccount,
+
+  // Staff
+  StaffLogin,
+  StaffSignUp,
+
 };

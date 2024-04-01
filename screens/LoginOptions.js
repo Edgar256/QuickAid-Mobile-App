@@ -14,7 +14,7 @@ export default function Index({navigation}) {
       </TouchableOpacity>
       <TouchableOpacity
         style={styles.button}
-        onPress={() => navigation.navigate('Login')}>
+        onPress={() => navigation.navigate('StaffSignUp')}>
         <Text style={styles.buttonText}>I am Medical Personnel</Text>
       </TouchableOpacity>
     </View>
