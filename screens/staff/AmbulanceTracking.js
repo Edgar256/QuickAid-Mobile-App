@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, FlatList } from 'react-native';
 import { COLORS } from '../../constants';
-import { getAmbulanceLocation } from '../../api'; // Assuming you have an API function to fetch ambulance location
+// import { getAmbulanceLocation } from '../../api'; // Assuming you have an API function to fetch ambulance location
 
 const AmbulanceTrackingScreen = () => {
   const [ambulanceLocation, setAmbulanceLocation] = useState(null);
@@ -9,7 +9,8 @@ const AmbulanceTrackingScreen = () => {
   useEffect(() => {
     // Fetch ambulance location when component mounts
     const fetchAmbulanceLocation = async () => {
-      const location = await getAmbulanceLocation(); // Function to fetch ambulance location from API
+      const location = ''
+    //   await getAmbulanceLocation(); // Function to fetch ambulance location from API
       setAmbulanceLocation(location);
     };
     fetchAmbulanceLocation();

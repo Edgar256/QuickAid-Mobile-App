@@ -12,18 +12,31 @@ const Stack = createNativeStackNavigator();
 
 import React from 'react';
 import {
+  Welcome,
   LoginOptions,
-  StaffLogin,
-  StaffSignUp,
+
+  // Patient Screens
   UserBlog,
   UserBlogs,
   UserLanding,
   UserLogin,
   UserSignUp,
   UserSubmitMedicalHistory,
-  Welcome,
+
+  // Staff Screens
+  StaffLogin,
+  StaffSignUp,
+  StaffAmbulanceDispatch,
+  StaffAmbulanceTracking,
+  StaffDashboard,
+  StaffAmbulanceDispatchConfirmation,
+  StaffAmbulanceDispatchHistory,
+  StaffPatientAdmission,
+  StaffProfile,
+  StaffSettings,
 } from './screens';
 import TabNavigator from './navigations/TabNavigator';
+import DrawerNavigator from './navigations/DrawerNavigator';
 
 function App() {
   return (
@@ -108,6 +121,64 @@ function App() {
             headerShown: false,
           }}
         />
+        {/* 
+  , */}
+        <Stack.Screen
+          name="DrawerNavigator"
+          component={DrawerNavigator}
+          options={{
+            headerShown: false,
+          }}
+        />
+        {/* <Stack.Screen
+          name="StaffAmbulanceTracking"
+          component={StaffAmbulanceTracking}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="StaffDashboard"
+          component={StaffDashboard}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="StaffAmbulanceDispatchConfirmation"
+          component={StaffAmbulanceDispatchConfirmation}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="StaffAmbulanceDispatchHistory"
+          component={StaffAmbulanceDispatchHistory}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="StaffPatientAdmission"
+          component={StaffPatientAdmission}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="StaffProfile"
+          component={StaffProfile}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="StaffSettings"
+          component={StaffSettings}
+          options={{
+            headerShown: false,
+          }}
+        /> */}
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -14,6 +14,14 @@ import UserAccount from './user/Account';
 // Staff screens
 import StaffLogin from './staff/Login';
 import StaffSignUp from './staff/SignUp';
+import StaffAmbulanceDispatch from './staff/AmbulanceDispatch';
+import StaffAmbulanceTracking from './staff/AmbulanceTracking';
+import StaffDashboard from './staff/Dashboard';
+import StaffAmbulanceDispatchConfirmation from './staff/DispatchConfirmation';
+import StaffAmbulanceDispatchHistory from './staff/DispatchHistory';
+import StaffPatientAdmission from './staff/PatientAdmission';
+import StaffProfile from './staff/Profile';
+import StaffSettings from './staff/Settings';
 
 export {
   Welcome,
@@ -24,7 +32,7 @@ export {
   UserSignUp,
   UserSubmitMedicalHistory,
   UserBlogs,
-  UserBlog,  
+  UserBlog,
   UserLanding,
   UserHistory,
   UserAccount,
@@ -32,5 +40,12 @@ export {
   // Staff
   StaffLogin,
   StaffSignUp,
-
+  StaffAmbulanceDispatch,
+  StaffAmbulanceTracking,
+  StaffDashboard,
+  StaffAmbulanceDispatchConfirmation,
+  StaffAmbulanceDispatchHistory,
+  StaffPatientAdmission,
+  StaffProfile,
+  StaffSettings,
 };

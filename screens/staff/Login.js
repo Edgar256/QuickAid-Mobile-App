@@ -7,7 +7,7 @@ import {
   StyleSheet,
 } from 'react-native';
 
-export default function Index() {
+export default function Index({navigation}) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -15,6 +15,7 @@ export default function Index() {
     // Implement your login logic here
     console.log('Email:', email);
     console.log('Password:', password);
+    navigation.navigate('DrawerNavigator');
   };
 
   return (

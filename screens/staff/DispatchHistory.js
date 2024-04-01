@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, FlatList, StyleSheet } from 'react-native';
 import { COLORS } from '../../constants';
-import { getDispatchHistory } from '../../api'; // Assuming you have an API function to fetch dispatch history
+// import { getDispatchHistory } from '../../api'; // Assuming you have an API function to fetch dispatch history
 
 const DispatchHistoryScreen = () => {
   const [dispatchHistory, setDispatchHistory] = useState([]);
@@ -9,7 +9,8 @@ const DispatchHistoryScreen = () => {
   useEffect(() => {
     // Fetch dispatch history when component mounts
     const fetchDispatchHistory = async () => {
-      const history = await getDispatchHistory(); // Function to fetch dispatch history from API
+      const history = ""
+      // await getDispatchHistory(); // Function to fetch dispatch history from API
       setDispatchHistory(history);
     };
     fetchDispatchHistory();
