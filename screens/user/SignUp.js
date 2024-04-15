@@ -13,6 +13,7 @@ import Alert from '../../components/Alert';
 import Spinner from '../../components/Spinner';
 import axios from 'axios';
 import {isValidEmail} from '../../utils/helpers';
+import axiosClient from '../../utils/axiosClient';
 
 export default function Index({navigation}) {
   const [fullName, setFullName] = useState('');
@@ -50,15 +51,16 @@ export default function Index({navigation}) {
 
       const payload = {name: fullName, email, password, phone: phoneNumber};
       setIsLoading(true);
-      axios
+      axiosClient
         .post(`${apiURL}/users/signup`, payload)
         .then(res => {
+          console.log(res);
           if (res.data.status === 200) {
             console.log(res);
             setIsLoading(false);
             return navigation.navigate('UserLogin');
           } else {
-            console.log(res);
+            setError('Failed to sign up. Please try again.');
             return setIsLoading(false);
           }
         })
@@ -120,6 +122,11 @@ export default function Index({navigation}) {
           <Text style={styles.buttonText}>Sign Up & Accept</Text>
         </TouchableOpacity>
       )}
+      <TouchableOpacity
+        style={styles.buttonPlain}
+        onPress={() => navigation.navigate('UserLogin')}>
+        <Text style={styles.buttonTextPlain}>Already have Account? Login</Text>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -154,6 +161,18 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: 'white',
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+  buttonPlain: {
+    backgroundColor: COLORS.white,
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 5,
+    marginVertical: 10,
+  },
+  buttonTextPlain: {
+    color: 'black',
     fontSize: 16,
     fontWeight: 'bold',
   },
