@@ -7,6 +7,7 @@
 
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {GestureHandlerRootView} from 'react-native-gesture-handler';
 
 const Stack = createNativeStackNavigator();
 
@@ -40,97 +41,97 @@ import DrawerNavigator from './navigations/DrawerNavigator';
 
 function App() {
   return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName={'Welcome'}>
-        <Stack.Screen
-          name="Welcome"
-          component={Welcome}
-          options={{title: 'Welcome', headerShown: false}}
-        />
-        <Stack.Screen
-          name="LoginOptions"
-          component={LoginOptions}
-          options={{title: 'Welcome', headerShown: false}}
-        />
+    <GestureHandlerRootView style={{flex: 1}}>
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName={'Welcome'}>
+          <Stack.Screen
+            name="Welcome"
+            component={Welcome}
+            options={{title: 'Welcome', headerShown: false}}
+          />
+          <Stack.Screen
+            name="LoginOptions"
+            component={LoginOptions}
+            options={{title: 'Welcome', headerShown: false}}
+          />
 
-        {/* User screens */}
-        <Stack.Screen
-          name="UserLogin"
-          component={UserLogin}
-          options={{
-            headerShown: false,
-          }}
-        />
-        <Stack.Screen
-          name="UserSignUp"
-          component={UserSignUp}
-          options={{
-            headerShown: false,
-          }}
-        />
-        <Stack.Screen
-          name="UserSubmitMedicalHistory"
-          component={UserSubmitMedicalHistory}
-          options={{
-            headerShown: false,
-          }}
-        />
-        <Stack.Screen
-          name="UserBlogs"
-          component={UserBlogs}
-          options={{
-            headerShown: true,
-            title: 'Blogs',
-          }}
-        />
-        <Stack.Screen
-          name="UserBlog"
-          component={UserBlog}
-          options={{
-            headerShown: true,
-            title: 'Blog',
-          }}
-        />
-        <Stack.Screen
-          name="UserLanding"
-          component={UserLanding}
-          options={{
-            headerShown: false,
-          }}
-        />
-        <Stack.Screen
-          name="TabNavigator"
-          component={TabNavigator}
-          options={{
-            headerShown: false,
-          }}
-        />
+          {/* User screens */}
+          <Stack.Screen
+            name="UserLogin"
+            component={UserLogin}
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="UserSignUp"
+            component={UserSignUp}
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="UserSubmitMedicalHistory"
+            component={UserSubmitMedicalHistory}
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="UserBlogs"
+            component={UserBlogs}
+            options={{
+              headerShown: true,
+              title: 'Blogs',
+            }}
+          />
+          <Stack.Screen
+            name="UserBlog"
+            component={UserBlog}
+            options={{
+              headerShown: true,
+              title: 'Blog',
+            }}
+          />
+          <Stack.Screen
+            name="UserLanding"
+            component={UserLanding}
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="TabNavigator"
+            component={TabNavigator}
+            options={{
+              headerShown: false,
+            }}
+          />
 
-        {/* Staff screens */}
-        <Stack.Screen
-          name="StaffLogin"
-          component={StaffLogin}
-          options={{
-            headerShown: false,
-          }}
-        />
-        <Stack.Screen
-          name="StaffSignUp"
-          component={StaffSignUp}
-          options={{
-            headerShown: false,
-          }}
-        />
-        {/* 
-  , */}
-        <Stack.Screen
-          name="DrawerNavigator"
-          component={DrawerNavigator}
-          options={{
-            headerShown: false,
-          }}
-        />
-        {/* <Stack.Screen
+          {/* Staff screens */}
+          <Stack.Screen
+            name="StaffLogin"
+            component={StaffLogin}
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="StaffSignUp"
+            component={StaffSignUp}
+            options={{
+              headerShown: false,
+            }}
+          />
+
+          <Stack.Screen
+            name="DrawerNavigator"
+            component={DrawerNavigator}
+            options={{
+              headerShown: false,
+            }}
+          />
+          {/* <Stack.Screen
           name="StaffAmbulanceTracking"
           component={StaffAmbulanceTracking}
           options={{
@@ -179,8 +180,9 @@ function App() {
             headerShown: false,
           }}
         /> */}
-      </Stack.Navigator>
-    </NavigationContainer>
+        </Stack.Navigator>
+      </NavigationContainer>
+    </GestureHandlerRootView>
   );
 }
 

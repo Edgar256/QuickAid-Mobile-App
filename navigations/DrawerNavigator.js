@@ -1,20 +1,78 @@
-import {createDrawerNavigator} from '@react-navigation/drawer';
-import DispatchHistoryScreen from '../screens/staff/DispatchHistory';
-import DashboardScreen from '../screens/staff/Dashboard';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import {StaffAmbulanceDispatch, StaffAmbulanceTracking, StaffSettings, UserAccount, UserHistory, UserLanding} from '../screens';
+import {COLORS} from '../constants';
 
-const Drawer = createDrawerNavigator();
+const Tab = createBottomTabNavigator();
 
-// Drawer navigation containing bottom tab navigation
-const DrawerNavigator = () => {
+function TabNavigator() {
   return (
-    <Drawer.Navigator initialRouteName="DispatchHistoryScreen">
-      <Drawer.Screen
-        name="DispatchHistoryScreen"
-        component={DispatchHistoryScreen}
+    <Tab.Navigator
+      initialRouteName="Ambulance Dispatch"
+      screenOptions={{
+        headerTitleAlign: 'center',
+        activeTintColor: COLORS.black,
+        tabBarStyle: {
+          backgroundColor: COLORS.white,
+          borderTopColor: COLORS.gray,
+          borderTopWidth: 1,
+          paddingBottom: 2,
+        },
+        headerStyle: {
+          backgroundColor: COLORS.black,
+        },
+        headerTintColor: COLORS.white,
+      }}>
+      <Tab.Screen
+        name="Ambulance Dispatch"
+        component={StaffAmbulanceDispatch}
+        options={{
+          tabBarLabel: 'Ambulance Dispatch',
+          tabBarIcon: ({color, size}) => (
+            <Icon
+              name="history"
+              size={25}
+              color={COLORS.black}
+              style={{marginBottom: 1}}
+            />
+          ),
+          //   tabBarBadge: 3,
+        }}
       />
-      <Drawer.Screen name="Dashboard" component={DashboardScreen} />
-    </Drawer.Navigator>
+      <Tab.Screen
+        name="Ambulance Tracking"
+        component={StaffAmbulanceTracking}
+        options={{
+          tabBarLabel: 'Ambulance Tracking',
+          tabBarIcon: ({color, size}) => (
+            <Icon
+              name="ambulance"
+              size={25}
+              color={COLORS.black}
+              style={{marginBottom: 1}}
+            />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Staff Settings"
+        component={StaffSettings}
+        options={{
+          tabBarLabel: 'Settings',
+          tabBarIcon: ({color, size}) => (
+            <Icon
+              name="user"
+              size={25}
+              color={COLORS.black}
+              style={{marginBottom: 1}}
+            />
+          ),
+          //   tabBarBadge: 3,
+        }}
+      />
+    </Tab.Navigator>
   );
-};
+}
 
-export default DrawerNavigator;
+export default TabNavigator;

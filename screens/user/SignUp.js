@@ -4,9 +4,15 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
+  ActivityIndicator,
   StyleSheet,
 } from 'react-native';
-import { COLORS } from '../../constants';
+import {COLORS} from '../../constants';
+import {apiURL} from '../../utils/apiURL'; // Import API_URL
+import Alert from '../../components/Alert';
+import Spinner from '../../components/Spinner';
+import axios from 'axios';
+import {isValidEmail} from '../../utils/helpers';
 
 export default function Index({navigation}) {
   const [fullName, setFullName] = useState('');
@@ -14,15 +20,56 @@ export default function Index({navigation}) {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [error, setError] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleSignup = () => {
-    // Implement your signup logic here
-    console.log('Full Name:', fullName);
-    console.log('Email:', email);
-    console.log('Phone Number:', phoneNumber);
-    console.log('Password:', password);
-    console.log('Confirm Password:', confirmPassword);
-    navigation.navigate('UserLogin');
+  const handleSignup = async () => {
+    try {
+      if (!fullName) return setError('Please add full names');
+      if (fullName.length < 6)
+        return setError('Fullnames should be more than 6 characters');
+      setError('');
+
+      if (!email) return setError('Please add email');
+      if (!isValidEmail(email)) return setError('Please enter a Valid email');
+      setError('');
+
+      if (!phoneNumber) return setError('Please add phone number');
+      if (phoneNumber.length < 6)
+        return setError('Phone number should be more than 6 characters');
+      setError('');
+
+      if (!password) return setError('Please add password');
+      if (password.length < 6)
+        return setError('Password should be more than 6 characters');
+      setError('');
+
+      if (password !== confirmPassword)
+        return setError('Passwords do not match');
+      setError('');
+
+      const payload = {name: fullName, email, password, phone: phoneNumber};
+      setIsLoading(true);
+      axios
+        .post(`${apiURL}/users/signup`, payload)
+        .then(res => {
+          if (res.data.status === 200) {
+            console.log(res);
+            setIsLoading(false);
+            return navigation.navigate('UserLogin');
+          } else {
+            console.log(res);
+            return setIsLoading(false);
+          }
+        })
+        .then(err => {
+          console.log(err);
+          return setIsLoading(false);
+        });
+    } catch (error) {
+      console.log({error});
+      return setIsLoading(false);
+    }
   };
 
   return (
@@ -63,9 +110,16 @@ export default function Index({navigation}) {
         value={confirmPassword}
         onChangeText={setConfirmPassword}
       />
-      <TouchableOpacity style={styles.button} onPress={handleSignup}>
-        <Text style={styles.buttonText}>Sign Up & Accept</Text>
-      </TouchableOpacity>
+
+      {error && <Alert text={error} />}
+
+      {isLoading ? (
+        <Spinner />
+      ) : (
+        <TouchableOpacity style={styles.button} onPress={handleSignup}>
+          <Text style={styles.buttonText}>Sign Up & Accept</Text>
+        </TouchableOpacity>
+      )}
     </View>
   );
 }
@@ -76,7 +130,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     paddingHorizontal: 20,
-    backgroundColor:COLORS.lightGray
+    backgroundColor: COLORS.lightGray,
   },
   title: {
     fontSize: 24,
