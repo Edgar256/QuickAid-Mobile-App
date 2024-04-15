@@ -27,7 +27,7 @@ export default function Index({navigation}) {
   const handleSignup = async () => {
     try {
       if (!fullName) return setError('Please add full names');
-      if (fullName.length < 6)
+      if (fullName.length < 3)
         return setError('Fullnames should be more than 6 characters');
       setError('');
 
@@ -51,7 +51,7 @@ export default function Index({navigation}) {
 
       const payload = {name: fullName, email, password, phone: phoneNumber};
       setIsLoading(true);
-      axiosClient
+      axios
         .post(`${apiURL}/users/signup`, payload)
         .then(res => {
           console.log(res);
