@@ -9,11 +9,12 @@ import {
 } from 'react-native';
 import {COLORS} from '../../constants';
 import {apiURL} from '../../utils/apiURL'; // Import API_URL
-import Alert from '../../components/Alert';
+import AlertDanger from '../../components/AlertDanger';
 import Spinner from '../../components/Spinner';
 import axios from 'axios';
 import {isValidEmail} from '../../utils/helpers';
 import axiosClient from '../../utils/axiosClient';
+import AlertSuccess from '../../components/AlertSuccess';
 
 export default function Index({navigation}) {
   const [fullName, setFullName] = useState('');
@@ -22,6 +23,7 @@ export default function Index({navigation}) {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
   const handleSignup = async () => {
@@ -54,18 +56,18 @@ export default function Index({navigation}) {
       axios
         .post(`${apiURL}/users/signup`, payload)
         .then(res => {
-          console.log(res);
           if (res.data.status === 200) {
-            console.log(res);
             setIsLoading(false);
-            return navigation.navigate('UserLogin');
+            setSuccessMessage('Account has been created successfully');
+            setTimeout(() => {
+              return navigation.navigate('UserLogin');
+            }, 2000);
           } else {
             setError('Failed to sign up. Please try again.');
             return setIsLoading(false);
           }
         })
         .then(err => {
-          console.log(err);
           return setIsLoading(false);
         });
     } catch (error) {
@@ -113,7 +115,8 @@ export default function Index({navigation}) {
         onChangeText={setConfirmPassword}
       />
 
-      {error && <Alert text={error} />}
+      {error && <AlertDanger text={error} />}
+      {successMessage && <AlertSuccess text={successMessage} />}
 
       {isLoading ? (
         <Spinner />

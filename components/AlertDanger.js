@@ -1,8 +1,8 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
-import { COLORS } from '../constants';
+import {COLORS} from '../constants';
 
-const Alert = ({text}) => {
+const AlertDanger = ({text}) => {
   return (
     <View style={styles.alert}>
       <Text style={styles.alertText}>{text}</Text>
@@ -30,4 +30,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Alert;
+export default AlertDanger;

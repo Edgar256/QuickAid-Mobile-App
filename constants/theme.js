@@ -8,6 +8,7 @@ export const COLORS = {
   secondary: '#EE4D9C',
   success: '#A8DD1F',
   danger: '#ED1C24',
+  lightGreen:"#00ff3c8c",
 
   // colors
   black: '#1E1E1E',
