@@ -2,16 +2,9 @@ import React, {useState, useEffect} from 'react';
 import {View, Text, StyleSheet, FlatList} from 'react-native';
 import axiosClient from '../../utils/axiosClient';
 import moment from 'moment';
+import Spinner from '../../components/Spinner';
 
 const PersonalDetailsPage = ({navigation}) => {
-  // Demo data for personal details
-  const userDetails = [
-    {label: 'Name', value: 'John Doe'},
-    {label: 'Email', value: 'johndoe@example.com'},
-    {label: 'Phone', value: '+1234567890'},
-    // Add more details as needed
-  ];
-
   const [user, setUser] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
@@ -36,20 +29,26 @@ const PersonalDetailsPage = ({navigation}) => {
   return (
     <View style={styles.container}>
       <Text style={styles.header}>Personal Details</Text>
-      <View style={styles.detailsContainer}>
-        <Text style={styles.label}>Name: {user.name}</Text>
-      </View>
-      <View style={styles.detailsContainer}>
-        <Text style={styles.value}>Email :{user.email}</Text>
-      </View>
-      <View style={styles.detailsContainer}>
-        <Text style={styles.value}>Phone :{user.phone}</Text>
-      </View>
-      <View style={styles.detailsContainer}>
-        <Text style={styles.value}>
-          Date Registered :{moment(user.createdAt).format('LLLL')}
-        </Text>
-      </View>
+      {isLoading ? (
+        <Spinner />
+      ) : (
+        <View>
+          <View style={styles.detailsContainer}>
+            <Text style={styles.label}>Name: {user.name}</Text>
+          </View>
+          <View style={styles.detailsContainer}>
+            <Text style={styles.value}>Email :{user.email}</Text>
+          </View>
+          <View style={styles.detailsContainer}>
+            <Text style={styles.value}>Phone :{user.phone}</Text>
+          </View>
+          <View style={styles.detailsContainer}>
+            <Text style={styles.value}>
+              Date Registered :{moment(user.createdAt).format('LLLL')}
+            </Text>
+          </View>
+        </View>
+      )}
     </View>
   );
 };
