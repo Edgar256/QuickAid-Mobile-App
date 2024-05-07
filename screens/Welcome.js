@@ -1,7 +1,6 @@
 import React, {useEffect} from 'react';
 import {View, Image, StyleSheet, Text, TouchableOpacity} from 'react-native';
 import {COLORS, images} from '../constants';
-import authUser from '../utils/authUser';
 import axiosClient from '../utils/axiosClient';
 
 const WelcomeScreen = ({navigation}) => {
@@ -11,7 +10,7 @@ const WelcomeScreen = ({navigation}) => {
 
       if (res.status === 200) {
         console.log('User is authenticated');
-        return navigation.navigate('UserLanding'); //UserBlogs UserSubmitMedicalHistory
+        return navigation.navigate('TabNavigator'); //UserBlogs UserSubmitMedicalHistory TabNavigator
       } else {
         console.log('User is not authenticated');
         return false;
