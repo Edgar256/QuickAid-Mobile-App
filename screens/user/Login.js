@@ -13,6 +13,7 @@ import {apiURL} from '../../utils/apiURL';
 import Spinner from '../../components/Spinner';
 import AlertDanger from '../../components/AlertDanger';
 import AlertSuccess from '../../components/AlertSuccess';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function Index({navigation}) {
   const [email, setEmail] = useState('');
@@ -34,18 +35,18 @@ export default function Index({navigation}) {
       setError('');
 
       const payload = {email, password};
-      console.log(payload);
 
       setIsLoading(true);
 
       axios.post(`${apiURL}/users/signin`, payload).then(res => {
         if (res.data.status === 200) {
           setIsLoading(false);
-          console.log(res.data.token);
+          AsyncStorage.setItem('token', res.data.token);
+          AsyncStorage.setItem('id', res.data.id);
           setSuccessMessage('Login Successful');
           setTimeout(() => {
-            // return navigation.navigate('UserSubmitMedicalHistory');
-          }, 2000);
+            return navigation.navigate('UserSubmitMedicalHistory');
+          }, 1500);
         } else if (res.data.status === 401) {
           setError(res.data.error);
           return setIsLoading(false);

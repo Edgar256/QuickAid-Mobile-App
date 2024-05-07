@@ -1,8 +1,31 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {View, Image, StyleSheet, Text, TouchableOpacity} from 'react-native';
 import {COLORS, images} from '../constants';
+import authUser from '../utils/authUser';
+import axiosClient from '../utils/axiosClient';
 
 const WelcomeScreen = ({navigation}) => {
+  const checkUserAuthentication = async () => {
+    try {
+      const res = await axiosClient.get('/users/getUser');
+
+      if (res.status === 200) {
+        console.log('User is authenticated');
+        return navigation.navigate('UserLanding'); //UserBlogs UserSubmitMedicalHistory
+      } else {
+        console.log('User is not authenticated');
+        return false;
+      }
+    } catch (error) {
+      console.error('Error occurred during user authentication check:', error);
+      // Handle error
+    }
+  };
+
+  useEffect(() => {
+    checkUserAuthentication();
+  }, []);
+
   return (
     <View style={styles.container}>
       <Image source={images.WelcomeBackground} style={styles.backgroundImage} />
@@ -37,13 +60,13 @@ const styles = StyleSheet.create({
     width: 200,
     height: 200,
     marginBottom: 20,
-  },  
+  },
   text: {
     color: COLORS.white,
     fontSize: 16,
     textAlign: 'center',
     marginTop: 30,
-    padding:30
+    padding: 30,
   },
   button: {
     backgroundColor: COLORS.primary,
@@ -51,10 +74,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: 30,
     borderRadius: 8,
     marginTop: 20,
-    marginBottom:100
-  }, 
+    marginBottom: 100,
+  },
   buttonText: {
-    color:  COLORS.white,
+    color: COLORS.white,
     fontSize: 18,
     fontWeight: 'bold',
   },
