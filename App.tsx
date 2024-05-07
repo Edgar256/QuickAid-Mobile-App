@@ -35,6 +35,7 @@ import {
   StaffPatientAdmission,
   StaffProfile,
   StaffSettings,
+  UserOrderAmbulance,
 } from './screens';
 import TabNavigator from './navigations/TabNavigator';
 import DrawerNavigator from './navigations/DrawerNavigator';
@@ -96,6 +97,13 @@ function App() {
           <Stack.Screen
             name="UserLanding"
             component={UserLanding}
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="UserOrderAmbulance"
+            component={UserOrderAmbulance}
             options={{
               headerShown: false,
             }}

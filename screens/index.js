@@ -10,6 +10,7 @@ import UserBlogs from './user/Blogs';
 import UserLanding from './user/Landing';
 import UserHistory from './user/History';
 import UserAccount from './user/Account';
+import UserOrderAmbulance from './user/OrderAmbulance'
 
 // Staff screens
 import StaffLogin from './staff/Login';
@@ -36,6 +37,7 @@ export {
   UserLanding,
   UserHistory,
   UserAccount,
+  UserOrderAmbulance,
 
   // Staff
   StaffLogin,

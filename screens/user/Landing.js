@@ -54,7 +54,7 @@ const LandingPage = ({navigation}) => {
       </View>
       <TouchableOpacity
         style={styles.section}
-        onPress={() => navigation.navigate('OrderAmbulance')}>
+        onPress={() => navigation.navigate('UserOrderAmbulance')}>
         <View style={styles.iconContainer}>
           <Icon name="ambulance" size={70} color={COLORS.primary} />
         </View>
