@@ -21,6 +21,7 @@
     "compare-versions": "^6.1.0",
     "expo-checkbox": "^2.5.0",
     "expo-linear-gradient": "^12.5.0",
+    "html-react-parser": "^5.1.10",
     "react": "18.2.0",
     "react-native": "0.73.1",
     "react-native-dotenv": "^3.4.11",

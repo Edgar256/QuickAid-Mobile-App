@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   View,
   StyleSheet,
@@ -9,11 +9,38 @@ import {
 } from 'react-native';
 import {COLORS, images} from '../../constants';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import axiosClient from '../../utils/axiosClient';
+import Spinner from '../../components/Spinner';
 
 const LandingPage = ({navigation}) => {
+  const [user, setUser] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
+
+  const getUser = async () => {
+    try {
+      const res = await axiosClient.get('/users/getUser');
+
+      if (res.status === 200) {
+        setUser(res.data.message);
+        return setIsLoading(false);
+      } else {
+        console.log('User is not authenticated');
+        return navigation.navigate('Welcome');
+      }
+    } catch (error) {}
+  };
+
+  useEffect(() => {
+    getUser();
+  }, []);
+
   return (
     <ScrollView style={styles.container}>
-      <Text style={styles.text}>Hello , John Doe !</Text>
+      {isLoading ? (
+        <Spinner />
+      ) : (
+        <Text style={styles.text}>Hello , {user?.name} !</Text>
+      )}
       <View style={styles.section}>
         <Text style={styles.sectionText}>
           Welcome to QuickAid - Your Trusted First Aid and Ambulance Services
