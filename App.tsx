@@ -36,6 +36,7 @@ import {
   StaffProfile,
   StaffSettings,
   UserOrderAmbulance,
+  UserHistory,
 } from './screens';
 import TabNavigator from './navigations/TabNavigator';
 import DrawerNavigator from './navigations/DrawerNavigator';
@@ -79,6 +80,13 @@ function App() {
             }}
           />
           <Stack.Screen
+            name="UserHistory"
+            component={UserHistory}
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
             name="UserBlogs"
             component={UserBlogs}
             options={{
@@ -105,7 +113,8 @@ function App() {
             name="UserOrderAmbulance"
             component={UserOrderAmbulance}
             options={{
-              headerShown: false,
+              headerShown: true,
+              title:"Order Ambulance"
             }}
           />
           <Stack.Screen
