@@ -6,7 +6,8 @@ import {COLORS} from '../constants';
 
 const Tab = createBottomTabNavigator();
 
-function TabNavigator() {
+function TabNavigator({route}) {
+  // console.log({route})
   return (
     <Tab.Navigator
       initialRouteName="Order Ambulance"

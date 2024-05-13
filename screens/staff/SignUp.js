@@ -6,6 +6,13 @@ import {
   TouchableOpacity,
   StyleSheet,
 } from 'react-native';
+import {isValidEmail} from '../../utils/helpers';
+import Spinner from '../../components/Spinner';
+import axios from 'axios';
+import {apiURL} from '../../utils/apiURL';
+import AlertDanger from '../../components/AlertDanger';
+import AlertSuccess from '../../components/AlertSuccess';
+import {COLORS} from '../../constants';
 
 export default function Index({navigation}) {
   const [fullName, setFullName] = useState('');
@@ -13,15 +20,57 @@ export default function Index({navigation}) {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [error, setError] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleSignup = () => {
-    // Implement your signup logic here
-    console.log('Full Name:', fullName);
-    console.log('Email:', email);
-    console.log('Phone Number:', phoneNumber);
-    console.log('Password:', password);
-    console.log('Confirm Password:', confirmPassword);
-    navigation.navigate('StaffLogin');
+  const handleSignup = async () => {
+    try {
+      if (!fullName) return setError('Please add full names');
+      if (fullName.length < 3)
+        return setError('Fullnames should be more than 6 characters');
+      setError('');
+
+      if (!email) return setError('Please add email');
+      if (!isValidEmail(email)) return setError('Please enter a Valid email');
+      setError('');
+
+      if (!phoneNumber) return setError('Please add phone number');
+      if (phoneNumber.length < 6)
+        return setError('Phone number should be more than 6 characters');
+      setError('');
+
+      if (!password) return setError('Please add password');
+      if (password.length < 6)
+        return setError('Password should be more than 6 characters');
+      setError('');
+
+      if (password !== confirmPassword)
+        return setError('Passwords do not match');
+      setError('');
+
+      const payload = {name: fullName, email, password, phone: phoneNumber};
+      setIsLoading(true);
+
+      axios
+        .post(`${apiURL}/staff/signup`, payload)
+        .then(res => {
+          console.log({res});
+          if (res.status === 201) {
+            setIsLoading(false);
+            setSuccessMessage('Account has been created successfully');
+            setTimeout(() => {
+              return navigation.navigate('StaffLogin');
+            }, 2000);
+          } else {
+            setError('Failed to sign up. Please try again.');
+            return setIsLoading(false);
+          }
+        })
+        .then(err => {
+          return setIsLoading(false);
+        });
+    } catch (error) {}
   };
 
   return (
@@ -32,6 +81,7 @@ export default function Index({navigation}) {
         placeholder="Full Name"
         value={fullName}
         onChangeText={setFullName}
+        color="black"
       />
       <TextInput
         style={styles.input}
@@ -62,8 +112,21 @@ export default function Index({navigation}) {
         value={confirmPassword}
         onChangeText={setConfirmPassword}
       />
-      <TouchableOpacity style={styles.button} onPress={handleSignup}>
-        <Text style={styles.buttonText}>Sign Up & Accept</Text>
+
+      {error && <AlertDanger text={error} />}
+      {successMessage && <AlertSuccess text={successMessage} />}
+
+      {isLoading ? (
+        <Spinner />
+      ) : (
+        <TouchableOpacity style={styles.button} onPress={handleSignup}>
+          <Text style={styles.buttonText}>Sign Up & Accept</Text>
+        </TouchableOpacity>
+      )}
+      <TouchableOpacity
+        style={styles.buttonPlain}
+        onPress={() => navigation.navigate('StaffLogin')}>
+        <Text style={styles.buttonTextPlain}>Already have Account? Login</Text>
       </TouchableOpacity>
     </View>
   );
@@ -88,7 +151,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 5,
     paddingHorizontal: 10,
-    marginBottom: 10,
+    marginBottom: 10,    
   },
   button: {
     backgroundColor: 'blue',

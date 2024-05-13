@@ -6,16 +6,28 @@ import axiosClient from '../utils/axiosClient';
 const WelcomeScreen = ({navigation}) => {
   const checkUserAuthentication = async () => {
     try {
-      const res = await axiosClient.get('/users/getUser');
+      const userData = await axiosClient.get('/users/getUser');
 
-      if (res.status === 200) {
+      if (userData.status === 200) {
         console.log('User is authenticated');
         return navigation.navigate('TabNavigator'); //UserBlogs UserSubmitMedicalHistory TabNavigator
+      } else {
+        const staffData = await axiosClient.get('/staff/getStaff');
+        if (staffData.status === 200) {
+          return navigation.navigate('DrawerNavigator');
+        } else {
+          console.log('User is not authenticated');
+          return false;
+        }
+      }
+    } catch (error) {
+      const staffData = await axiosClient.get('/staff/getStaff');
+      if (staffData.status === 200) {
+        return navigation.navigate('DrawerNavigator');
       } else {
         console.log('User is not authenticated');
         return false;
       }
-    } catch (error) {
       console.error('Error occurred during user authentication check:', error);
       // Handle error
     }

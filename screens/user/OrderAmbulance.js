@@ -74,8 +74,11 @@ const OrderAmbulance = ({navigation}) => {
     if (res.status === 201) {
       setIsLoading(false);
       setSuccessMessage('Ambulance Order has been Submitted');
+      setLocation('');
+      setNotes('');
+      setLocation('');
       setTimeout(() => {
-        return navigation.navigate('UserHistory');
+        return navigation.navigate('TabNavigator');
       }, 2000);
     } else {
       setIsLoading(false);
@@ -188,7 +191,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: COLORS.lightGray,
     padding: 10,
-  },  
+  },
   section: {
     backgroundColor: COLORS.white,
     padding: 10,

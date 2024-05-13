@@ -84,6 +84,7 @@ export default function Index({navigation}) {
         placeholder="Full Name"
         value={fullName}
         onChangeText={setFullName}
+        color="black"
       />
       <TextInput
         style={styles.input}
@@ -144,8 +145,9 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 24,
-    fontWeight: 'bold',
+    // fontWeight: 'bold',
     marginBottom: 20,
+    color: COLORS.black,
   },
   input: {
     width: '100%',
@@ -155,6 +157,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     paddingHorizontal: 10,
     marginBottom: 10,
+    color: 'black',
   },
   button: {
     backgroundColor: COLORS.primary,
@@ -177,6 +180,6 @@ const styles = StyleSheet.create({
   buttonTextPlain: {
     color: 'black',
     fontSize: 16,
-    fontWeight: 'bold',
+    // fontWeight: 'bold',
   },
 });

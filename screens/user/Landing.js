@@ -21,6 +21,8 @@ const LandingPage = ({navigation}) => {
       const res = await axiosClient.get('/users/getUser');
 
       if (res.status === 200) {
+        if (res.data.message.role !== 'USER')
+          return navigation.navigate('Welcome');
         setUser(res.data.message);
         return setIsLoading(false);
       } else {
